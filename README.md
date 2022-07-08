@@ -3,6 +3,7 @@
 Google Cloud Platform VM instance with Container Optimized OS
 Bitwarden with rclone backups to Google Drive
 
+From a Cloud Shell console window
 ```shell
 gcloud compute instances create bitwarden \
   --machine-type e2-micro \
@@ -12,6 +13,8 @@ gcloud compute instances create bitwarden \
   --boot-disk-size=30GB \
   --scopes compute-rw
 ```
+
+Add SSH key to VM instance
 
 SSH to VM instance
 
@@ -29,14 +32,26 @@ chmod 0600 $HOME/rclone/rclone.conf
 
 ```shell
 cd $HOME
-git clone https://github.com/krimil/gcp-bitwarden-cloudflared.git .
+git clone https://github.com/krimil/gcp-bitwarden-cloudflared.git
 cd gcp-bitwarden-cloudflared
 cp .env-dist .env
 ```
 
-Create cloudflared tunnel in Cloudflare Zero Trust dashboard.  Add token to .env
+Create cloudflared tunnel in Cloudflare Zero Trust dashboard
+Create subdomain for bitwarden
+Service: HTTP://bitwarden:80
+Add tunnel token to .env
 
+Install alias for docker-compose
+```shell
+sh setup/install-alias.sh
+source ~/.bashrc
+docker-compose --version
+```
 
+```shell
+docker-compose up -d
+```
 
 ## Extra steps
 From within your compute vm console, type the command toolbox. From within toolbox, find the utilities folder within bitwarden_gcloud. toolbox mounts the host filesystem under /media/root, so go there to find the folder. It will likely be in /media/root/home/<google account name>/gcp-bitwarden-cloudflared/setup - change directory to that folder.
