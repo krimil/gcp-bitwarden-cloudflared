@@ -55,10 +55,10 @@ docker-compose up -d
 ```
 
 ## Extra steps
-From within your compute vm console, type the command toolbox. From within toolbox, find the utilities folder within bitwarden_gcloud. toolbox mounts the host filesystem under /media/root, so go there to find the folder. It will likely be in /media/root/home/<google account name>/gcp-bitwarden-cloudflared/setup - change directory to that folder.
+From within your compute vm console, type the command toolbox. From within toolbox, find the utilities folder within gcp-bitwarden-cloud. toolbox mounts the host filesystem under /media/root, so go there to find the folder. It will likely be in /media/root/home/<google account name>/gcp-bitwarden-cloudflared/setup - change directory to that folder.
 
 Next, use gcloud to add the reboot-on-update.sh script to your vm's boot script metadata with the add-metadata command:
 ```shell
-gcloud compute instances add-metadata bitwarden-rs --zone=us-central1-a --metadata-from-file startup-script=reboot-on-update.sh
+gcloud compute instances add-metadata bitwarden --zone=us-central1-a --metadata-from-file startup-script=reboot-on-update.sh
 ```
 
