@@ -61,16 +61,28 @@ services:
       - BACKUP_ENCRYPTION_KEY
     restart: always
     volumes:
+      - backups:/backups
       - bitwarden-data:/data
-      - $PWD/../rclone:/config
-      - $PWD/../backups:/backups
+      - rclone-config:/config
 
 networks:
   cloudflared:
 
 volumes:
+  backups:
+    driver_opts:
+      type: none
+      o: bind
+      device: $PWD/../backups
+
   bitwarden-data:
     driver_opts:
       type: none
       o: bind
       device: $PWD/../docker/bitwarden/data
+  
+  rclone-config:
+    driver_opts:
+      type: none
+      o: bind
+      device: $PWD/../rclone
