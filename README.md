@@ -61,4 +61,4 @@ Next, use gcloud to add the reboot-on-update.sh script to your vm's boot script 
 ```shell
 gcloud compute instances add-metadata bitwarden --zone=us-central1-a --metadata-from-file startup-script=reboot-on-update.sh
 ```
-
+You can confirm that your startup script has been added in your instance details under "Custom metadata" on the Compute Engine Console.
