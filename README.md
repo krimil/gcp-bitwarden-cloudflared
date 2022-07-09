@@ -28,6 +28,7 @@ mkdir -p $HOME/docker/bitwarden/data
 Copy/Create rclone.conf for Google Drive in $HOME/rclone
 ```shell
 chmod 0600 $HOME/rclone/rclone.conf
+sudo chown root:root $HOME/rclone/rclone.conf
 ```
 
 ```shell
