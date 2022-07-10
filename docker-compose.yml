@@ -56,6 +56,7 @@ services:
     depends_on:
       - bitwarden
     environment:
+      - TZ
       - BACKUP_DAYS
       - BACKUP_RCLONE_DEST
       - BACKUP_ENCRYPTION_KEY
